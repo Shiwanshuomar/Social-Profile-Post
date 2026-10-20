@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylsheet/styleRead.css">
+</head>
+<body>
+     <h1 style="display: inline; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;margin: 3px;">All Users</h1>
+     <a href="/" id="home">Back Home</a>
+
+    <div id="box">
+        <%if(users.length>0){%>
+     <%users.forEach((user)=>{%>
+        
+        <div class="shape user-card" data-name="<%= user.name %>" data-email="<%= user.email %>">
+        <div class="inside" style="background-image: url(<%=user.image%>);background-size:cover;background-position: center;">
+            
+        </div>
+        <div class="information">
+            <h3><%=user.name%></h3>
+            <h5><%=user.email%></h5>
+            <h5><%=user.age%></h5>
+        </div>
+        <div class="change">
+            
+        <a href="/update/<%=user._id%>" style="color: yellow; text-decoration: none;">Update</a>
+        <a href="/delete/<%=user._id%>" style="color: red; text-decoration: none;">Delete</a>
+
+        </div>
+     </div>
+    <%})%>
+  <%}else{%>
+    <h3>No Users Yet</h3>
+    <%}%>
+     
+     </div>
+
+    <script>
+        // Added: client-side search without changing create/update/delete routes
+        const searchInput = document.getElementById('userSearch');
+        const userCards = Array.from(document.querySelectorAll('.user-card'));
+        const userCount = document.getElementById('userCount');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                const query = this.value.trim().toLowerCase();
+                let visible = 0;
+
+                userCards.forEach(function (card) {
+                    const name = (card.dataset.name || '').toLowerCase();
+                    const email = (card.dataset.email || '').toLowerCase();
+                    const matches = name.includes(query) || email.includes(query);
+                    card.style.display = matches ? '' : 'none';
+                    if (matches) visible++;
+                });
+
+                userCount.textContent = 'Showing ' + visible + ' of ' + userCards.length + ' users';
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylsheet/style3.css">
+</head>
+<body>
+    <!-- <div class="main"> -->
+    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;margin: 3px;">Update User</h1>
+    <form action="/update/<%=user._id%>" method="post">
+        <input type="text" class="input" name="name" placeholder="Name" value="<%= user.name%>">
+        <input type="text" class="input" name="email" placeholder="Email" value=<%= user.email%>>
+         <input type="text" class="input" name="age" placeholder="Age" value="<%= user.age%>">
+        <input type="text" class="input" name="image" placeholder="Image Url" value=<%= user.image%>>
+        <input type="submit" value="Update User"  class="change">
+        
+        <a href="/read" id="read" class="change"  >Read Users</a>
+    </form>
+    
+</body>
+</html>

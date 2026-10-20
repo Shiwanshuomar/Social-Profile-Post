@@ -1,0 +1,21 @@
+body{
+   background-color: rgba(0, 0, 0, 0.744);
+   color: white;
+}
+.input{
+    margin-top: 10px;
+    margin-left: 4px;
+    padding: 5px;
+    border-radius: .3em;
+    border: none;
+}
+.change{
+     padding: 5px; 
+     margin-left: 4px;
+     background-color: yellow;
+     color: black; 
+     border-radius: 0.3em; 
+     border: none;
+     text-decoration: none;
+}
+
